@@ -23,9 +23,11 @@ const products: IProduct[] = new Array(noOfProducts).fill(0).map(x=>{
 }) 
 export const DataService = {
     getAllProducts: () => {
-            const array=[...products]
-            return array
-       
+        try {
+            return products
+        } catch (error) {
+            throw error;
+        }
     },
 
     getFeaturedProducts: () => {
@@ -41,29 +43,51 @@ export const DataService = {
     getBrands() {
         return brands;
     },
-     getFilteredData: (
+
+    getFilteredData: (
         prodName: string = "",
         priceRange: PriceEnum[] = [], 
         rating: number[]=[], 
         brand: string[] = []
     ): IProduct[] => {
         
-       
+        let filtered: IProduct[] 
         
-       const filtered = products.filter(prod => {
-            return (prodName && prod.name.includes(prodName))
-                    ||(brand.length && brand.includes(prod.brand)) 
-                    || (priceRange.includes(PriceEnum.Under500) && prod.price <= 500) 
-                    || (priceRange.includes(PriceEnum.Between1000To3000) && prod.price >= 1000 && prod.price <= 3000) 
-                    || (rating.includes(1) && prod.rating === 1)  
+        // filtered = products.filter(prod => {
+        //     return (prodName && prod.name.includes(prodName))
+        //             ||(brand.length && brand.includes(prod.brand)) 
+        //             || (priceRange.includes(PriceEnum.Under500) && prod.price <= 500) 
+        //             || (priceRange.includes(PriceEnum.Between1000To3000) && prod.price >= 1000 && prod.price <= 3000) 
+        //             || (rating.includes(1) && prod.rating === 1)  
+        //             || (rating.includes(2) && prod.rating === 2)  
+        //             || (rating.includes(3) && prod.rating === 3)  
+        //             || (rating.includes(4) && prod.rating === 4)  
+        //             || (rating.includes(5) && prod.rating === 5) 
+        // })
+
+        if(prodName){
+            filtered=products.filter(prod => prod.name.toLowerCase().includes(prodName.toLowerCase()))
+        }
+        else{
+            filtered=products
+        }
+
+        if(brand.length){
+            filtered = filtered.filter(prod => brand.includes(prod.brand))
+        }
+        if(priceRange.length){
+            filtered = filtered.filter(prod => (priceRange.includes(PriceEnum.Under500) && prod.price <= 500) 
+                    || (priceRange.includes(PriceEnum.Between1000To3000) && prod.price >= 1000 && prod.price <= 3000))
+        }
+        if(rating.length){
+            filtered = filtered.filter(prod => (rating.includes(1) && prod.rating === 1)  
                     || (rating.includes(2) && prod.rating === 2)  
                     || (rating.includes(3) && prod.rating === 3)  
                     || (rating.includes(4) && prod.rating === 4)  
-                    || (rating.includes(5) && prod.rating === 5) 
-        })
-
-       
+                    || (rating.includes(5) && prod.rating === 5) )
+        }
         return filtered
         
     }
 }
+
