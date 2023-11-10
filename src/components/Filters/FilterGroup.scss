@@ -1,0 +1,9 @@
+input[type="checkbox"] {
+  transform: scale(1.5);
+  margin-left: 1.2rem;
+  & + label {
+    margin-left: 1rem;
+    font-weight: lighter;
+    opacity: 0.9;
+  }
+}

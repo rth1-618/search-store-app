@@ -6,10 +6,21 @@ import Ratings from "./components/Ratings/Ratings";
 import { DataService } from "./services/data";
 import { IProduct } from "./core/types/IProduct";
 import ItemGroup from "./components/ItemGroup/ItemGroup";
+import FilterGroup from "./components/Filters/FilterGroup";
+import { IFilter } from "./core/types/IFilter";
 
 const App: React.FC = () => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const products = DataService.getAllProducts();
+  const [products, setProducts] = useState<IProduct[]>([]);
+  const [filters, setFilters] = useState<IFilter>({
+    brands: [],
+    priceRange: [],
+    rating: [],
+  });
+
+  useEffect(() => {
+    setProducts(DataService.getAllProducts());
+  }, []);
 
   return (
     <div className="wrap">
@@ -18,6 +29,7 @@ const App: React.FC = () => {
         {isSearchFocused && <FeaturedProducts />}
         <Ratings rate={3} raters={120} />
         <Ratings rate={4} />
+        <FilterGroup setFilters={setFilters} />
         <ItemGroup products={products}></ItemGroup>
       </div>
     </div>
