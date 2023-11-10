@@ -1,6 +1,6 @@
 .wrap-filter {
   margin-bottom: 1.2rem 0;
-  width: 500px;
+  width: 20vw;
 }
 
 input.toggle[type="checkbox"] {
@@ -25,9 +25,10 @@ input.toggle[type="checkbox"] {
     border-bottom: 5px solid transparent;
     border-top: 5px solid transparent;
     border-left: 5px solid currentColor;
-    vertical-align: middle;
+
     position: absolute;
     right: 0;
+    top: 50%;
     transform: translateY(-2px);
 
     transition: transform 0.2s ease-out;

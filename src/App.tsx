@@ -19,7 +19,7 @@ const App: React.FC = () => {
     rating: [],
   });
   useEffect(() => {
-    console.log("filters", filters);
+    // console.log("filters", filters);
     if (
       !srchText &&
       !filters.brands.length &&
@@ -43,26 +43,30 @@ const App: React.FC = () => {
     <>
       {isResultPage ? (
         <div className="wrap-no-bg">
-          <div className="App">
+          <div className="srch-bar-in-results">
             <SearchBar
               setSrchText={setSrchText}
               setIsSearchFocused={setIsSearchFocused}
               setIsResultPage={setIsResultPage}
             />
-            <h2>Search Results</h2>
-            <FilterGroup setFilters={setFilters} />
-            <ItemGroup products={products} />
           </div>
+          <h1 className="title">Search Results</h1>
+          <div className="aside">
+            <FilterGroup setFilters={setFilters} />
+          </div>
+          <ItemGroup products={products} />
         </div>
       ) : (
         <div className="wrap">
           <div className="App">
-            <SearchBar
-              setSrchText={setSrchText}
-              setIsSearchFocused={setIsSearchFocused}
-              setIsResultPage={setIsResultPage}
-            />
-            {isSearchFocused && <FeaturedProducts />}
+            <div className="landing">
+              <SearchBar
+                setSrchText={setSrchText}
+                setIsSearchFocused={setIsSearchFocused}
+                setIsResultPage={setIsResultPage}
+              />
+              {isSearchFocused && <FeaturedProducts />}
+            </div>
           </div>
         </div>
       )}

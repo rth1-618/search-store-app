@@ -1,9 +1,16 @@
+$left-margin: 1.2rem;
+
 input[type="checkbox"] {
   transform: scale(1.5);
-  margin-left: 1.2rem;
+  margin-left: $left-margin;
   & + label {
     margin-left: 1rem;
     font-weight: lighter;
     opacity: 0.9;
   }
+}
+
+hr {
+  width: 100%;
+  margin-left: $left-margin;
 }

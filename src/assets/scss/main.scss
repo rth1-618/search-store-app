@@ -1,4 +1,5 @@
 @import "./variables";
+@import "./global-mixins";
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 @mixin wrapper($bg-url) {
@@ -10,21 +11,41 @@
     bottom: 0px;
     left: 0px;
     right: 0px;
-    opacity: 0.6;
+    opacity: 0.7;
     background-image: url($bg-url);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
   & .App {
-    position: relative;
     width: 100vw;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+    @include relative-flex-col();
+
     font-family: "Roboto", sans-serif;
     color: $primary-color;
+
+    & .landing {
+      @include relative-flex-col();
+      margin-top: 5rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  & .aside {
+    float: left;
+  }
+  & .srch-bar-in-results {
+    @include relative-flex-col();
+    padding: 1rem 0;
+  }
+
+  & .title {
+    color: #000;
+    z-index: 10000;
+    font-weight: lighter;
+    margin-left: 2rem;
   }
 }
 

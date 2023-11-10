@@ -29,17 +29,17 @@ const FilterGroup: React.FC<{
     };
 
     setFilters(filters);
-    console.log("selectedBrands", selectedBrands);
-    console.log("priceRange", priceRange);
-    console.log("selectedRating", selectedRating);
-  }, [selectedBrands, priceRange, selectedRating]);
+    // console.log("selectedBrands", selectedBrands);
+    // console.log("priceRange", priceRange);
+    // console.log("selectedRating", selectedRating);
+  }, [selectedBrands, priceRange, selectedRating, setFilters]);
 
   return (
     <>
       <Filters title="brand">
-        {brands.map((brand) => {
+        {brands.map((brand, idx) => {
           return (
-            <div>
+            <div key={idx}>
               <input
                 id={`brand-${brand}`}
                 type="checkbox"
@@ -57,6 +57,8 @@ const FilterGroup: React.FC<{
           );
         })}
       </Filters>
+
+      <hr color="gray" />
       <Filters title="price range">
         <input
           id="pr-lt-500"
@@ -86,9 +88,10 @@ const FilterGroup: React.FC<{
         />
         <label htmlFor="pr-gt-500">1000 to 3000</label>
       </Filters>
+      <hr color="gray" />
       <Filters title="ratings">
         {ratingMap.map((r, idx) => (
-          <div>
+          <div key={idx}>
             <input
               id={`filter-rating-${idx}`}
               type="checkbox"

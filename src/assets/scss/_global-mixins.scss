@@ -6,3 +6,10 @@
   justify-content: space-evenly;
   background-color: white;
 }
+
+@mixin relative-flex-col() {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
