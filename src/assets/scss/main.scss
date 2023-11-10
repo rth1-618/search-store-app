@@ -1,7 +1,7 @@
 @import "./variables";
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-.wrap {
+@mixin wrapper($bg-url) {
   position: relative;
   &::before {
     content: "";
@@ -11,20 +11,27 @@
     left: 0px;
     right: 0px;
     opacity: 0.6;
-    background-image: url("../images/bg.png");
+    background-image: url($bg-url);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
+  & .App {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Roboto", sans-serif;
+    color: $primary-color;
+  }
 }
 
-.App {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: "Roboto", sans-serif;
-  color: $primary-color;
+.wrap {
+  @include wrapper("../images/bg.png");
+}
+
+.wrap-no-bg {
+  @include wrapper("");
 }
