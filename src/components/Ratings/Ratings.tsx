@@ -13,6 +13,7 @@ const Ratings: React.FC<{ rate: number; raters?: number }> = ({
         {arr.map((x, index) => {
           return (
             <i
+              key={index}
               className="bi bi-star-fill rating"
               style={{ color: index <= rate - 1 ? "#fdd33d" : "#cdccc8" }}
             ></i>

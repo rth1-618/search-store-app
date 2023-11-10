@@ -22,11 +22,9 @@ const products: IProduct[] = new Array(noOfProducts).fill(0).map(x=>{
 }) 
 export const DataService = {
     getAllProducts: () => {
-        try {
-            return products
-        } catch (error) {
-            throw error;
-        }
+            const array=[...products]
+            return array
+       
     },
 
     getFeaturedProducts: () => {

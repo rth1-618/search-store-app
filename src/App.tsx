@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./assets/scss/main.scss";
-import { faker } from "@faker-js/faker";
 import SearchBar from "./components/SearchBar/SearchBar";
 import FeaturedProducts from "./components/FeaturedProducts/FeaturedProducts";
 import Ratings from "./components/Ratings/Ratings";
+import { DataService } from "./services/data";
+import { IProduct } from "./core/types/IProduct";
+import ItemGroup from "./components/ItemGroup/ItemGroup";
 
 const App: React.FC = () => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const products = DataService.getAllProducts();
+
   return (
     <div className="wrap">
       <div className="App">
@@ -14,6 +18,7 @@ const App: React.FC = () => {
         {isSearchFocused && <FeaturedProducts />}
         <Ratings rate={3} raters={120} />
         <Ratings rate={4} />
+        <ItemGroup products={products}></ItemGroup>
       </div>
     </div>
   );

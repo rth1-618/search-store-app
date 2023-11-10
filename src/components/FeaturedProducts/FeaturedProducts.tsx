@@ -16,13 +16,15 @@ const FeaturedProducts = () => {
     <div className="trend__container">
       <div className="trend__title">Latest Trends</div>
       <div className="trend__flex">
-        {featuredProds.map((prod) => (
-          <ItemCard product={prod} isFeat={true} />
+        {featuredProds.map((prod, idx) => (
+          <ItemCard key={idx} product={prod} isFeat={true} />
         ))}
       </div>
       <div className="trend__title">Popular Suggestions</div>
-      {suggestedProds.map((prod) => (
-        <div className="suggested">{prod.name}</div>
+      {suggestedProds.map((prod, idx) => (
+        <div key={idx} className="suggested">
+          {prod.name}
+        </div>
       ))}
     </div>
   );

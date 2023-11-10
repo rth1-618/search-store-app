@@ -1,0 +1,5 @@
+@import "../../assets/scss/global-mixins";
+
+.container__results {
+  @include item-flow(row, wrap);
+}
