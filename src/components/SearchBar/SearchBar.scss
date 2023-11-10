@@ -1,0 +1,28 @@
+@import "../../assets/scss/variables";
+
+.search-bar {
+  position: relative;
+  display: flex;
+  box-shadow: 0 0 100px $accent-color;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  width: 40rem;
+
+  .input-box {
+    width: 100%;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: inherit;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .icon {
+    position: absolute;
+    outline: none;
+    align-self: center;
+    right: 0;
+  }
+}
