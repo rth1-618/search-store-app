@@ -1,0 +1,8 @@
+@mixin item-flow($flex-dir, $flex-wrap) {
+  padding: 5rem 2rem;
+  display: flex;
+  flex-flow: $flex-dir $flex-wrap;
+  gap: 2rem;
+  justify-content: space-evenly;
+  background-color: white;
+}

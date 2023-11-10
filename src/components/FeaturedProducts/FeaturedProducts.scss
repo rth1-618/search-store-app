@@ -1,0 +1,22 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/global-mixins";
+
+.trend__container {
+  background-color: white;
+  height: 75vh;
+  width: 65vw;
+
+  box-shadow: 0 0 100px $accent-color;
+  .trend__title {
+    font-size: 1.5rem;
+    padding: 1rem 2.5rem;
+    vertical-align: middle;
+  }
+  .trend__flex {
+    @include item-flow(row, nowrap);
+    padding: 0 2.5rem;
+  }
+  .suggested {
+    padding: 0.1rem 2.5rem;
+  }
+}
